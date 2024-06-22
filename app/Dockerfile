@@ -3,7 +3,7 @@ FROM --platform=$BUILDPLATFORM python:3.10-alpine AS builder
 
 WORKDIR /app
 
-EXPOSE 8000
+EXPOSE 8000:8000
 
 COPY requirements.txt /app
 RUN --mount=type=cache,target=/root/.cache/pip \
@@ -15,6 +15,8 @@ ENTRYPOINT ["python3"]
 CMD ["app.py"]
 
 FROM builder as dev-envs
+
+
 
 # RUN <<EOF
 # apk update
